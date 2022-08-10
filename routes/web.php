@@ -28,7 +28,8 @@ Route::post('/agendados/agendar', 'App\Http\Controllers\AgendadosController@agen
 Route::get('/agendados', [AgendadosController::class, 'index'])->name('agendados.index');
 
 
-
+//Imprimir
+Route::get('/agendados/pdf', 'App\Http\Controllers\AgendadosController@pdf')->name('agendados.pdf');
 
 
 Auth::routes();

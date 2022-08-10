@@ -18,6 +18,7 @@ class CreateCitasTable extends Migration
             $table->date('dia');
             $table->string('hora');
             $table->integer('iddoctor');
+            $table->integer('estatus');
             $table->timestamps();
         });
     }

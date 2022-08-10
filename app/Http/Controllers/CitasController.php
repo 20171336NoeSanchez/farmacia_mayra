@@ -25,7 +25,7 @@ class CitasController extends Controller
                 $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.iddoctor = u.id AND c.iddoctor='.$id.' AND u.'.$tipo." like '%".$buscar."%'";
                 $citas = DB::select($sql);
             }else{
-                $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.iddoctor = u.id AND u.'.$tipo." like '%".$buscar."%'";
+                $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.estatus = 0 AND c.iddoctor = u.id AND u.'.$tipo." like '%".$buscar."%'";
                 $citas = DB::select($sql);
             }
         }else{
@@ -33,7 +33,7 @@ class CitasController extends Controller
                 $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.iddoctor = u.id AND c.iddoctor='.$id;
                 $citas = DB::select($sql);
             }else{
-                $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.iddoctor = u.id ';
+                $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.estatus = 0 AND c.iddoctor = u.id ';
                 $citas = DB::select($sql);
             }
 
@@ -50,6 +50,7 @@ class CitasController extends Controller
         $cita->dia = $request->dia;
         $cita->hora = $request->hora;
         $cita->iddoctor = $id;
+        $cita->estatus = 0;
         $cita->save();
 
         return redirect()->route('citas.index');

@@ -28,7 +28,11 @@
         }
 
     ?>
-   
+   <div class="row">
+        <div class="col-md-12 mb-2">
+            <a href="{{ route('agendados.pdf') }}" class="btn btn-primary">PDF</a>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">

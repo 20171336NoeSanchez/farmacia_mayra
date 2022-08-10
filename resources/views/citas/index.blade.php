@@ -40,21 +40,23 @@
         </div>
     @endauth
     @guest
-     <form class="form-inline">
-
-        <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
-          <option>Buscar por:</option>
-          <option>Doctor</option>
-          <option>Especialidad</option>
-        </select>
-
-
-        <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
-       
-
-        
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-      </form>
+    <form class="form-inline">
+        <div class="row mb-4">
+            <div class="col-4">
+                <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
+                    <option>Buscar por:</option>
+                    <option>Doctor</option>
+                    <option>Especialidad</option>
+                </select>
+            </div>
+            <div class="col-4">
+                <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
+            </div>
+            <div class="col-4">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </div>
+        </div>
+    </form>
     @endguest
     <div class="row justify-content-center">
         <div class="col-md-12">

@@ -26,8 +26,10 @@
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm underline" style="color: #fff;">Home</a>
+                        <a href="{{ url('/citas') }}" class="text-sm underline" style="color: #fff;">Citas</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm underline" style="color: #fff;">Login</a>
+                        <a href="{{ url('/citas') }}" class="text-sm underline " style="color: #fff;">Citas</a>
+                        <a href="{{ route('login') }}" class="ml-4 text-sm underline" style="color: #fff;">Login</a>
 
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm underline" style="color: #fff;">Register</a>
