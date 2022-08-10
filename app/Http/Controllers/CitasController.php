@@ -9,16 +9,34 @@ use Illuminate\Support\Facades\DB;
 class CitasController extends Controller
 {
    
-
-    public function index()
+    public function index(Request $request)
     {
         $id = auth()->id();
-        if($id != null){
-            $sql = 'SELECT * FROM citas WHERE iddoctor='.$id;
-            $citas = DB::select($sql);
+        $buscar = $request->get('buscarpor');
+        $tipo = "";
+        $tipocamp = $request->get('tipo');
+        if ($tipocamp=="Doctor"){
+            $tipo = "name";
+        }else if ($tipocamp=="Especialidad"){
+            $tipo = "especialidad";
+        }
+        if ( ($tipo) && ($buscar) ) {
+            if($id != null){
+                $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.iddoctor = u.id AND c.iddoctor='.$id.' AND u.'.$tipo." like '%".$buscar."%'";
+                $citas = DB::select($sql);
+            }else{
+                $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.iddoctor = u.id AND u.'.$tipo." like '%".$buscar."%'";
+                $citas = DB::select($sql);
+            }
         }else{
-            $sql = 'SELECT * FROM citas';
-            $citas = DB::select($sql);
+            if($id != null){
+                $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.iddoctor = u.id AND c.iddoctor='.$id;
+                $citas = DB::select($sql);
+            }else{
+                $sql = 'SELECT c.id, c.dia, c.hora, u.id AS idusuario, u.name, u.especialidad FROM citas AS c JOIN users AS u WHERE c.iddoctor = u.id ';
+                $citas = DB::select($sql);
+            }
+
         }
        
         return view('citas.index', compact('citas'));
