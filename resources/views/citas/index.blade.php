@@ -39,7 +39,8 @@
             </div>
         </div>
     @endauth
-    <form class="form-inline">
+    @guest
+     <form class="form-inline">
 
         <select name="tipo" class="form-control mr-sm-2" id="exampleFormControlSelect1">
           <option>Buscar por:</option>
@@ -49,11 +50,12 @@
 
 
         <input name="buscarpor" class="form-control mr-sm-2" type="search" placeholder="Buscar..." aria-label="Search">
-
+       
 
         
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
       </form>
+    @endguest
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
