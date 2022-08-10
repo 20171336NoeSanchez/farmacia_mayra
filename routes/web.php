@@ -23,7 +23,11 @@ Route::delete('/citas{id}', [CitasController::class, 'destroy'])->name('citas.de
 
 
 //Agendados
+Route::post('/agendados/agendar', 'App\Http\Controllers\AgendadosController@agendar')->name('agendados.agendar');
+
 Route::get('/agendados', [AgendadosController::class, 'index'])->name('agendados.index');
+
+
 
 
 

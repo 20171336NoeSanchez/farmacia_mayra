@@ -8,16 +8,19 @@ use Illuminate\Support\Facades\DB;
 
 class CitasController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+   
 
     public function index()
     {
         $id = auth()->id();
-        $sql = 'SELECT * FROM citas WHERE iddoctor='.$id;
-        $citas = DB::select($sql);
+        if($id != null){
+            $sql = 'SELECT * FROM citas WHERE iddoctor='.$id;
+            $citas = DB::select($sql);
+        }else{
+            $sql = 'SELECT * FROM citas';
+            $citas = DB::select($sql);
+        }
+       
         return view('citas.index', compact('citas'));
     }
 
