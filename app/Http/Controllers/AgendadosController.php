@@ -14,7 +14,9 @@ class AgendadosController extends Controller
 
     public function index()
     {
-        $agendados = Agendado::all();
+        $agendados = Agendado::join("citas","agendados.idcita","=","citas.id")
+        
+        ->get();
         return view('agendados.index', compact('agendados'));
     }
 }

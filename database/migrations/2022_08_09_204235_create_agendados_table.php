@@ -17,7 +17,7 @@ class CreateAgendadosTable extends Migration
         {
             $table->id('id');
             $table->integer('idcita');
-            $table->integer('idpaciente');
+            $table->string('nombrepaciente');
             $table->integer('estatus');
             $table->timestamps();
         });

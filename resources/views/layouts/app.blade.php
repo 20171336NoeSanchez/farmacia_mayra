@@ -35,8 +35,8 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <a class="nav-link" href="{{ route('citas.index') }}">{{ __('Citas') }}</a>
+                        <a class="nav-link" href="{{ route('agendados.index') }}">{{ __('Agendados') }}</a>
                     </ul>
-                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">

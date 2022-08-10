@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CitasController extends Controller
 {
@@ -14,16 +15,20 @@ class CitasController extends Controller
 
     public function index()
     {
-        $citas = Cita::all();
+        $id = auth()->id();
+        $sql = 'SELECT * FROM citas WHERE iddoctor='.$id;
+        $citas = DB::select($sql);
         return view('citas.index', compact('citas'));
     }
 
     public function create(Request $request)
     {
+        $id = auth()->id();
+
         $cita = new Cita();
         $cita->dia = $request->dia;
         $cita->hora = $request->hora;
-        $cita->iddoctor = 1;
+        $cita->iddoctor = $id;
         $cita->save();
 
         return redirect()->route('citas.index');
